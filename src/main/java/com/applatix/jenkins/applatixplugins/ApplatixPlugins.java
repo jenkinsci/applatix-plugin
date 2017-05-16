@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import jenkins.tasks.SimpleBuildStep;
 import net.sf.json.JSONObject;
+import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
@@ -162,6 +163,7 @@ public class ApplatixPlugins extends Builder implements SimpleBuildStep {
      * Descriptor for ApplatixPlugins. Used as a singleton.
      * The class is marked as public so that it can be accessed from views.
      */
+    @Symbol("applatix")
     @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
         private String axUrl;
