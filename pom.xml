@@ -24,6 +24,14 @@
   <description>Integrates Applatix System to Jenkins</description>
   <url>https://wiki.jenkins-ci.org/display/JENKINS/Applatix+Plugin</url>
 
+  <developers>
+    <developer>
+      <id>edlee2121</id>
+      <name>Ed Lee</name>
+      <email>elee@applatix.com</email>
+    </developer>
+  </developers>
+
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
