@@ -1,7 +1,7 @@
 ## Applatix Plugin for Jenkins
 
 ### General
-The plugin integrates Jenkins and Applatix to launch service template based jobs on Applatix system,
+The Applatix plugin integrates Applatix with Jenkins to launch container-native workflows in public cloud.
 For more information please visit the [Applatix Plugin - Jenkins Wiki](http://wiki.jenkins-ci.org/display/JENKINS/Applatix+Plugin)
 
 ### How to Contribute
