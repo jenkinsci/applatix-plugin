@@ -1,0 +1,4 @@
+<?jelly escape-by-default='true'?>
+<div>
+  This plugin allows you to run jobs on Applatix system
+</div>
