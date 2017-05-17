@@ -177,13 +177,6 @@ public class ApplatixPlugin extends Builder implements SimpleBuildStep {
     @Symbol("applatix")
     @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
-        private String axUrl;
-        private String axUsername;
-        private String axPassword;
-        private String axServiceTemplateName;
-        private String axServiceTemplateRepository;
-        private String axServiceTemplateBranch;
-        private String axServiceTemplateParameters;
 
         public DescriptorImpl() {
             load();
@@ -198,28 +191,6 @@ public class ApplatixPlugin extends Builder implements SimpleBuildStep {
         public boolean configure(StaplerRequest req, JSONObject formData) throws FormException {
             // To persist global configuration information,
             // set that to properties and call save().
-
-            if(formData.has("axUrl")) {
-                axUrl = formData.getString("axUrl");
-            }
-            if(formData.has("axUsername")) {
-                axUsername = formData.getString("axUsername");
-            }
-            if(formData.has("axPassword")) {
-                axPassword = formData.getString("axPassword");
-            }
-            if(formData.has("axServiceTemplateName")) {
-                axServiceTemplateName = formData.getString("axServiceTemplateName");
-            }
-            if(formData.has("axServiceTemplateRepository")) {
-                axServiceTemplateRepository = formData.getString("axServiceTemplateRepository");
-            }
-            if(formData.has("axServiceTemplateBranch")) {
-                axServiceTemplateBranch = formData.getString("axServiceTemplateBranch");
-            }
-            if(formData.has("axServiceTemplateParameters")) {
-                axServiceTemplateParameters = formData.getString("axServiceTemplateParameters");
-            }
 
             req.bindJSON(this, formData);
             save();
