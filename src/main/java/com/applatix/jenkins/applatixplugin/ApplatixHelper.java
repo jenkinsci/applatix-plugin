@@ -1,4 +1,4 @@
-package com.applatix.jenkins.applatixplugins;
+package com.applatix.jenkins.applatixplugin;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
@@ -58,8 +58,13 @@ public class ApplatixHelper {
 
     public void login() {
         JSONObject credential = new JSONObject();
-        credential.put("username", this.axUsername);
-        credential.put("password", this.axPassword);
+        try {
+            credential.put("username", this.axUsername);
+            credential.put("password", this.axPassword);
+        }
+        catch (org.json.JSONException e) {
+            throw new Error("Fail to parse credential");
+        }
 
         try {
             HttpResponse loginResponse = Unirest.post(this.axUrl + loginPath)
@@ -97,8 +102,13 @@ public class ApplatixHelper {
     public String createService(String id, Map<String, String> parameters) {
         JSONObject serviceBody = new JSONObject();
         JSONObject parametersJson = new JSONObject();
-        for(String key: parameters.keySet()) {
-            parametersJson.put(key, parameters.get(key));
+        for(Map.Entry<String, String> entry: parameters.entrySet()) {
+            try {
+                parametersJson.put(entry.getKey(), entry.getValue());
+            }
+            catch (org.json.JSONException e) {
+                throw new Error("Fail to parse the parameters");
+            }
         }
 
         try {

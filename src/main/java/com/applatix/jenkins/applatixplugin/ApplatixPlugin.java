@@ -1,4 +1,4 @@
-package com.applatix.jenkins.applatixplugins;
+package com.applatix.jenkins.applatixplugin;
 
 import hudson.Launcher;
 import hudson.Extension;
@@ -16,9 +16,8 @@ import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
-import com.applatix.jenkins.applatixplugins.ApplatixHelper;
 
-public class ApplatixPlugins extends Builder implements SimpleBuildStep {
+public class ApplatixPlugin extends Builder implements SimpleBuildStep {
     private final String axUrl;
     private final String axUsername;
     private final String axPassword;
@@ -27,7 +26,6 @@ public class ApplatixPlugins extends Builder implements SimpleBuildStep {
     private final String axServiceTemplateBranch;
     private final List<KeyValuePair> axServiceTemplateParameters;
 
-    private String axClientInitFailureMessage;
     public static final String configuredImproperlyError = "Applatix configured improperly in project settings \n";
 
     public String getAxUrl() { return axUrl; }
@@ -39,9 +37,9 @@ public class ApplatixPlugins extends Builder implements SimpleBuildStep {
     public List<KeyValuePair> getAxServiceTemplateParameters() { return axServiceTemplateParameters; }
 
     @DataBoundConstructor
-    public ApplatixPlugins(String axUrl, String axUsername, String axPassword, String axServiceTemplateName,
-                           String axServiceTemplateRepository, String axServiceTemplateBranch,
-                           List<KeyValuePair> axServiceTemplateParameters) throws InterruptedException, IOException {
+    public ApplatixPlugin(String axUrl, String axUsername, String axPassword, String axServiceTemplateName,
+                          String axServiceTemplateRepository, String axServiceTemplateBranch,
+                          List<KeyValuePair> axServiceTemplateParameters) throws InterruptedException, IOException {
         this.axUrl = axUrl;
         this.axUsername = axUsername;
         this.axPassword = axPassword;
@@ -125,8 +123,14 @@ public class ApplatixPlugins extends Builder implements SimpleBuildStep {
             this.value = value;
         }
 
+        @Override
         public Object clone() {
-            return new KeyValuePair(getKey(), getValue());
+            try {
+                return super.clone();
+            }
+            catch (CloneNotSupportedException e) {
+                throw new Error("Something impossible just happened");
+            }
         }
 
         @Override
@@ -151,6 +155,13 @@ public class ApplatixPlugins extends Builder implements SimpleBuildStep {
         public String getValue() {
             return value;
         }
+
+        @Override
+        public int hashCode() {
+            int hash = 3;
+            hash = 67 * hash + (this.key != null ? this.key.hashCode() : 0);
+            return hash;
+        }
     }
 
     // Overridden for better type safety.
@@ -160,7 +171,7 @@ public class ApplatixPlugins extends Builder implements SimpleBuildStep {
     }
 
     /**
-     * Descriptor for ApplatixPlugins. Used as a singleton.
+     * Descriptor for ApplatixPlugin. Used as a singleton.
      * The class is marked as public so that it can be accessed from views.
      */
     @Symbol("applatix")

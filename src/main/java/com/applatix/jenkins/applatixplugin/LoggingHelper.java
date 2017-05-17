@@ -1,4 +1,4 @@
-package com.applatix.jenkins.applatixplugins;
+package com.applatix.jenkins.applatixplugin;
 
 import hudson.model.TaskListener;
 
@@ -11,9 +11,9 @@ public class LoggingHelper {
     public static void log(final TaskListener listener, String message, String secondary) {
         String completeMessage;
         if(secondary == null || secondary.isEmpty()) {
-            completeMessage = "[Applatix Plugins] " + message;
+            completeMessage = "[Applatix Plugin] " + message;
         } else {
-            completeMessage = "[Applatix Plugins] " + message + "\n> " + secondary;
+            completeMessage = "[Applatix Plugin] " + message + "\n> " + secondary;
         }
 
         if(listener == null) {
