@@ -9,7 +9,7 @@
   </parent>
   <groupId>com.applatix.jenkins</groupId>
   <artifactId>applatix</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
   <packaging>hpi</packaging>
 
   <properties>
@@ -43,7 +43,7 @@
     <connection>scm:git:git://github.com/jenkinsci/applatix-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/applatix-plugin.git</developerConnection>
     <url>http://github.com/jenkinsci/applatix-plugin</url>
-    <tag>applatix-1.0</tag>
+    <tag>applatix-1.1</tag>
   </scm>
 
   <repositories>
