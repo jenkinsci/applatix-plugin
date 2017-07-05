@@ -9,7 +9,7 @@ Applatix welcomes community contribution through pull requests.
 
 #### Important:
 The plugin code is stored in github repository:
-https://github.com/jenkinsci/applatix_plugin
+https://github.com/jenkinsci/applatix-plugin
 
 Please make sure to submit pull requests to Applatix only.
 
